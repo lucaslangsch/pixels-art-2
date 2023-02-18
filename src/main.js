@@ -6,6 +6,8 @@ const gridWidthValue = document.getElementById('grid-width-value');
 const gridHeigth = document.getElementById('grid-height');
 const gridHeigthValue = document.getElementById('grid-height-value');
 const paintSelected = document.getElementById('select-color');
+const btnPaintGrid = document.getElementById('paint-grid');
+const btnEraseGrid = document.getElementById('erase-grid');
 
 // Funções
 
@@ -45,7 +47,7 @@ gridHeigth.addEventListener('input', () => {
   gridHeigthValue.innerText = gridHeigth.value;
 });
 
-const paintGrid = () => {
+const paintGridFunction = () => {
   const divRow = document.querySelectorAll('#div-col');
   for (let index = 0; index < divRow.length; index += 1) {
     divRow[index].addEventListener('click', () => {
@@ -55,9 +57,24 @@ const paintGrid = () => {
   }
 };
 
+const eraseGridFunction = () => {
+  const divRow = document.querySelectorAll('#div-col');
+  for (let index = 0; index < divRow.length; index += 1) {
+    divRow[index].addEventListener('click', () => {
+      divRow[index].style.backgroundColor = 'white';
+    });
+  }
+};
+
+btnPaintGrid.addEventListener('click', () => {
+  paintGridFunction();
+});
+btnEraseGrid.addEventListener('click', () => {
+  eraseGridFunction();
+});
+
 btnCreateGrid.addEventListener('click', () => {
   const gridHeigthV = gridHeigth.value;
   const gridWidthV = gridWidth.value;
   createGrid(gridHeigthV, gridWidthV);
-  paintGrid();
 });
