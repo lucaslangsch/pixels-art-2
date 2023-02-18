@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paint Box</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Pixels Art 2.0</h1>
+  </header>
+
+  <main>
+    <div id="options">
+      <div id="grid-options">
+        <label for="grid-width">Grid Width</label>
+        <input type="range" name="width" id="grid-width" min="1" max="40" value="0"><span id="grid-width-value">1</span>
+        <label for="grid-height">Grid Height</label>
+        <input type="range" name="height" id="grid-height" min="1" max="40" value="0"><span id="grid-height-value">1</span>
+        <button id="create-grid">Create Grid</button>
+      </div>
+      <div id="paint-options">
+        <button>Clear</button>
+        <button>Random Color</button>
+        <input type="color" name="select-color" id="select-color">
+        <button>Erase</button>
+        <button>Paint</button>
+      </div>
+    </div>
+    <div id="grid-main">
+    </div>
+  </main>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
