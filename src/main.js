@@ -5,6 +5,7 @@ const gridWidth = document.getElementById('grid-width');
 const gridWidthValue = document.getElementById('grid-width-value');
 const gridHeigth = document.getElementById('grid-height');
 const gridHeigthValue = document.getElementById('grid-height-value');
+const paintSelected = document.getElementById('select-color');
 
 // Funções
 
@@ -16,13 +17,13 @@ const createDivWidth = () => {
   gridMain.appendChild(gridDiv);
 };
 
-const createDivHeigth = (div) => {
+const createDivHeigth = (divWidth) => {
   const gridDiv = document.createElement('div');
   gridDiv.style.border = 'solid 1px black';
   gridDiv.style.width = '2em';
   gridDiv.style.height = '2em';
   gridDiv.id = 'div-col';
-  div.appendChild(gridDiv);
+  divWidth.appendChild(gridDiv);
 };
 
 const createGrid = (x, y) => {
@@ -44,29 +45,19 @@ gridHeigth.addEventListener('input', () => {
   gridHeigthValue.innerText = gridHeigth.value;
 });
 
+const paintGrid = () => {
+  const divRow = document.querySelectorAll('#div-col');
+  for (let index = 0; index < divRow.length; index += 1) {
+    divRow[index].addEventListener('click', () => {
+      const colorSelected = paintSelected.value;
+      divRow[index].style.backgroundColor = colorSelected;
+    });
+  }
+};
+
 btnCreateGrid.addEventListener('click', () => {
   const gridHeigthV = gridHeigth.value;
   const gridWidthV = gridWidth.value;
   createGrid(gridHeigthV, gridWidthV);
+  paintGrid();
 });
-
-// const createGrid = () => {
-//   for (let index = 0; index < 20; index++) {
-//     createDivWidth();
-//   }
-// };
-
-// const paintBox = document.getElementById("paint-box");
-
-// for (let i = 0; i < 10; i++) {
-//   const row = document.createElement("div");
-//   row.classList.add("row");
-
-//   for (let j = 0; j < 10; j++) {
-//     const cell = document.createElement("div");
-//     cell.classList.add("cell");
-//     row.appendChild(cell);
-//   }
-
-//   paintBox.appendChild(row);
-// }
