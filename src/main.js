@@ -36,13 +36,18 @@ const createGrid = (x, y) => {
     }
   });
 };
-createGrid(4, 3);
 
 gridWidth.addEventListener('input', () => {
   gridWidthValue.innerText = gridWidth.value;
 });
 gridHeigth.addEventListener('input', () => {
   gridHeigthValue.innerText = gridHeigth.value;
+});
+
+btnCreateGrid.addEventListener('click', () => {
+  const gridHeigthV = gridHeigth.value;
+  const gridWidthV = gridWidth.value;
+  createGrid(gridHeigthV, gridWidthV);
 });
 
 // const createGrid = () => {
