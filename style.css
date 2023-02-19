@@ -6,6 +6,7 @@
 
 #grid-main {
   display: flex;
+  background-color: #ff00;
 }
 
 /* #div-col {

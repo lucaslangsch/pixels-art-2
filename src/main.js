@@ -9,6 +9,8 @@ const paintSelected = document.getElementById('select-color');
 const btnPaintGrid = document.getElementById('paint-grid');
 const btnEraseGrid = document.getElementById('erase-grid');
 const btnClearGrid = document.getElementById('clear-grid');
+const btnRandomColor = document.getElementById('random-color');
+const baseHex = 16;
 
 // Funções
 
@@ -85,4 +87,21 @@ btnClearGrid.addEventListener('click', () => {
   for (let index = 0; index < divRow.length; index += 1) {
     divRow[index].style.backgroundColor = 'white';
   }
+});
+
+// Função auxiliar que transforma um número rgb em hex
+const valueToHex = (c) => {
+  const hex = c.toString(baseHex);
+  if (hex.length === 1) {
+    return `0${hex}`;
+  }
+  return hex;
+};
+const rgbToHex = (r, g, b) => (valueToHex(r) + valueToHex(g) + valueToHex(b));
+
+btnRandomColor.addEventListener('click', () => {
+  const r = Math.floor(Math.random() * 255);
+  const g = Math.floor(Math.random() * 255);
+  const b = Math.floor(Math.random() * 255);
+  paintSelected.value = `#${rgbToHex(r, g, b)}`;
 });
