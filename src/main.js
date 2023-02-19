@@ -8,6 +8,7 @@ const gridHeigthValue = document.getElementById('grid-height-value');
 const paintSelected = document.getElementById('select-color');
 const btnPaintGrid = document.getElementById('paint-grid');
 const btnEraseGrid = document.getElementById('erase-grid');
+const btnClearGrid = document.getElementById('clear-grid');
 
 // Funções
 
@@ -77,4 +78,11 @@ btnCreateGrid.addEventListener('click', () => {
   const gridHeigthV = gridHeigth.value;
   const gridWidthV = gridWidth.value;
   createGrid(gridHeigthV, gridWidthV);
+});
+
+btnClearGrid.addEventListener('click', () => {
+  const divRow = document.querySelectorAll('#div-col');
+  for (let index = 0; index < divRow.length; index += 1) {
+    divRow[index].style.backgroundColor = 'white';
+  }
 });
