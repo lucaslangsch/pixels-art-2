@@ -17,8 +17,6 @@ const baseHex = 16;
 const createDivWidth = () => {
   const gridDiv = document.createElement('div');
   gridDiv.classList.add('div-row');
-  gridDiv.style.width = '2em';
-  gridDiv.style.height = '2em';
   gridMain.appendChild(gridDiv);
 };
 
@@ -27,11 +25,12 @@ const createDivHeigth = (divWidth) => {
   gridDiv.style.border = 'solid 1px black';
   gridDiv.style.width = '2em';
   gridDiv.style.height = '2em';
-  gridDiv.id = 'div-col';
+  gridDiv.classList.add('div-col');
   divWidth.appendChild(gridDiv);
 };
 
 const createGrid = (x, y) => {
+  gridMain.innerHTML = '';
   for (let index = 0; index < x; index += 1) {
     createDivWidth();
   }
@@ -51,7 +50,8 @@ gridHeigth.addEventListener('input', () => {
 });
 
 const paintGridFunction = () => {
-  const divRow = document.querySelectorAll('#div-col');
+  const divRow = document.querySelectorAll('.div-col');
+  console.log(divRow);
   for (let index = 0; index < divRow.length; index += 1) {
     divRow[index].addEventListener('click', () => {
       const colorSelected = paintSelected.value;
@@ -61,7 +61,7 @@ const paintGridFunction = () => {
 };
 
 const eraseGridFunction = () => {
-  const divRow = document.querySelectorAll('#div-col');
+  const divRow = document.querySelectorAll('.div-col');
   for (let index = 0; index < divRow.length; index += 1) {
     divRow[index].addEventListener('click', () => {
       divRow[index].style.backgroundColor = 'white';
@@ -83,7 +83,7 @@ btnCreateGrid.addEventListener('click', () => {
 });
 
 btnClearGrid.addEventListener('click', () => {
-  const divRow = document.querySelectorAll('#div-col');
+  const divRow = document.querySelectorAll('.div-col');
   for (let index = 0; index < divRow.length; index += 1) {
     divRow[index].style.backgroundColor = 'white';
   }
@@ -100,8 +100,9 @@ const valueToHex = (c) => {
 const rgbToHex = (r, g, b) => (valueToHex(r) + valueToHex(g) + valueToHex(b));
 
 btnRandomColor.addEventListener('click', () => {
-  const r = Math.floor(Math.random() * 255);
-  const g = Math.floor(Math.random() * 255);
-  const b = Math.floor(Math.random() * 255);
+  const numberMaxForRgb = 255;
+  const r = Math.floor(Math.random() * numberMaxForRgb);
+  const g = Math.floor(Math.random() * numberMaxForRgb);
+  const b = Math.floor(Math.random() * numberMaxForRgb);
   paintSelected.value = `#${rgbToHex(r, g, b)}`;
 });
