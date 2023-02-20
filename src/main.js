@@ -13,7 +13,6 @@ const btnRandomColor = document.getElementById('random-color');
 const baseHex = 16;
 
 // Funções
-
 const createDivWidth = () => {
   const gridDiv = document.createElement('div');
   gridDiv.classList.add('div-row');
