@@ -12,6 +12,10 @@ const btnClearGrid = document.getElementById('clear-grid');
 const btnRandomColor = document.getElementById('random-color');
 const baseHex = 16;
 
+if (localStorage.key) {
+  gridMain.innerHTML = localStorage.getItem('grid');
+}
+
 // Funções
 const createDivWidth = () => {
   const gridDiv = document.createElement('div');
@@ -22,8 +26,8 @@ const createDivWidth = () => {
 const createDivHeigth = (divWidth) => {
   const gridDiv = document.createElement('div');
   gridDiv.style.border = 'solid 1px black';
-  gridDiv.style.width = '2em';
-  gridDiv.style.height = '2em';
+  gridDiv.style.width = '1.5em';
+  gridDiv.style.height = '1.5em';
   gridDiv.classList.add('div-col');
   divWidth.appendChild(gridDiv);
 };
@@ -55,6 +59,7 @@ const paintGridFunction = () => {
     divRow[index].addEventListener('click', () => {
       const colorSelected = paintSelected.value;
       divRow[index].style.backgroundColor = colorSelected;
+      localStorage.setItem('grid', (gridMain.innerHTML));
     });
   }
 };
@@ -64,6 +69,7 @@ const eraseGridFunction = () => {
   for (let index = 0; index < divRow.length; index += 1) {
     divRow[index].addEventListener('click', () => {
       divRow[index].style.backgroundColor = 'white';
+      localStorage.setItem('grid', (gridMain.innerHTML));
     });
   }
 };
@@ -79,12 +85,14 @@ btnCreateGrid.addEventListener('click', () => {
   const gridHeigthV = gridHeigth.value;
   const gridWidthV = gridWidth.value;
   createGrid(gridHeigthV, gridWidthV);
+  localStorage.setItem('grid', (gridMain.innerHTML));
 });
 
 btnClearGrid.addEventListener('click', () => {
   const divRow = document.querySelectorAll('.div-col');
   for (let index = 0; index < divRow.length; index += 1) {
     divRow[index].style.backgroundColor = 'white';
+    localStorage.setItem('grid', (gridMain.innerHTML));
   }
 });
 
